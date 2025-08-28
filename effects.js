@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, 15);
     });
-    barsAnimated = true;
+    barsAnimated = true;  
   }
 
   function resetBars() {
