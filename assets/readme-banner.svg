@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Erick Hernández — Portafolio personal</title>
+  <desc id="desc">Banner oscuro con acentos verdes y una ventana de código decorativa.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#071912"/><stop offset="1" stop-color="#0b1020"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#86efac" stroke-opacity=".06"/></pattern>
+  </defs>
+  <rect width="1200" height="360" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="360" rx="24" fill="url(#grid)"/>
+  <path d="M48 60h44" stroke="#4ade80" stroke-width="5"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="48" y="107" fill="#86efac" font-size="15" letter-spacing="4">PORTAFOLIO PERSONAL</text>
+    <text x="46" y="175" fill="#f0fdf4" font-size="55" font-weight="700">Erick Hernández</text>
+    <text x="48" y="221" fill="#a7b9b0" font-size="22">Aprender. Construir. Mejorar.</text>
+    <text x="48" y="293" fill="#86efac" font-size="15" letter-spacing="2">HTML / CSS / JAVASCRIPT</text>
+  </g>
+  <rect x="730" y="68" width="420" height="230" rx="14" fill="#0c1613" stroke="#28523c"/>
+  <path d="M730 111H1150" stroke="#28523c"/>
+  <circle cx="753" cy="90" r="5" fill="#fb7185"/><circle cx="772" cy="90" r="5" fill="#fbbf24"/><circle cx="791" cy="90" r="5" fill="#4ade80"/>
+  <g font-family="monospace" font-size="18">
+    <text x="757" y="153" fill="#a7b9b0">&lt;developer&gt;</text>
+    <text x="781" y="193" fill="#86efac">ideas + código</text>
+    <text x="781" y="230" fill="#86efac">= aprendizaje</text>
+    <text x="757" y="270" fill="#a7b9b0">&lt;/developer&gt;</text>
+  </g>
+</svg>
