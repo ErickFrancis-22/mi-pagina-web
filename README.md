@@ -1,32 +1,59 @@
-# mi-pagina-web
+<div align="center">
 
-Welcome to the repository for my personal website. This project serves as a showcase for my skills, competencies, and the progress of my learning journey in web development.
+# 🌐 Portafolio personal
+### Erick Francis Hernández Angel
 
-## 🚀 Project Description
+Mi espacio para presentar mis proyectos, conocimientos y progreso en desarrollo de software.
 
-This project is a static website designed to present my technical competencies, projects, and programming languages. It was developed using fundamental client-side technologies to ensure a clean and functional user experience.
+**HTML · CSS · JavaScript**
 
-## 🛠 Technologies Used
-
-The site is built with the following file structure:
-
-*   **HTML5 (`index.html`, `competencias.html`)**: Semantic structure of the content.
-*   **CSS3 (`styles.css`)**: Design, responsiveness, and visual styling.
-*   **JavaScript (`effects.js`, `lenguajes.js`)**: Interactive logic, dynamic effects, and data handling for programming languages.
-
-## 📂 Repository Structure
-
-*   `index.html`: Main landing page.
-*   `competencias.html`: Detailed view of my technical skills.
-*   `styles.css`: Global stylesheet.
-*   `effects.js`: Script for animations and user interactions.
-*   `lenguajes.js`: Logic for displaying my programming abilities.
-*   `.vscode/`: Editor configuration settings.
-
-## 👤 Author
-
-*   **Erick Francis Hernández Angel** 
-*   Software Development student at ITCA-FEPADE.
+</div>
 
 ---
-*This project reflects my initial focus on frontend development as I continue my learning roadmap toward DevOps and specialization in backend architectures.*
+
+## 👋 Sobre el proyecto
+
+Sitio web personal desarrollado para compartir mis competencias técnicas y mi aprendizaje en desarrollo web.
+
+Este proyecto forma parte de mi formación como Técnico en Desarrollo de Software en ITCA-FEPADE y refleja mis primeros pasos construyendo interfaces con HTML, CSS y JavaScript.
+
+Actualmente, mi aprendizaje también está enfocado en **C#, ASP.NET Core y SQL Server**, con interés en el desarrollo backend.
+
+## 🛠️ Tecnologías
+
+| Tecnología | Uso |
+| :--- | :--- |
+| **HTML5** | Estructura y contenido de las páginas |
+| **CSS3** | Estilos, presentación y adaptación a distintos dispositivos |
+| **JavaScript** | Interacciones, efectos y contenido dinámico |
+
+## 📂 Estructura
+
+```text
+mi-pagina-web/
+├── index.html          # Página principal
+├── competencias.html   # Competencias técnicas
+├── styles.css          # Estilos del sitio
+├── effects.js          # Efectos e interacciones
+└── lenguajes.js         # Presentación de lenguajes
+```
+
+## 🚀 Cómo visualizarlo
+
+1. Cloná o descargá este repositorio.
+2. Abrí `index.html` en tu navegador.
+
+También podés ejecutarlo desde Visual Studio Code con la extensión **Live Server**.
+
+## 👤 Autor
+
+**Erick Francis Hernández Angel**  
+Formación en Desarrollo de Software · ITCA-FEPADE
+
+---
+
+<div align="center">
+
+Aprendiendo, construyendo y mejorando un proyecto a la vez.
+
+</div>
