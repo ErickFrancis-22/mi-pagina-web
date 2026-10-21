@@ -1,260 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home</title>
-
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="styles.css" />
-
-  <!--Fuente-->
-  <link href="https://fonts.cdnfonts.com/css/dot-matrix" rel="stylesheet">
-
-
-  <!--Idiomas-->
-  <script src="https://unpkg.com/i18next@22.4.9/i18next.min.js"></script>
-  <script src="languajes.js"></script>
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0506">
+  <meta name="description" content="Portafolio de Erick Hernández. Formación en desarrollo de software, C#, .NET y SQL Server.">
+  <title>Erick Hernández | Desarrollo de software</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="languajes.js" defer></script>
+  <script src="projects.js" defer></script>
+  <script src="effects.js" defer></script>
 </head>
-
 <body>
-  <div style="position: relative; z-index: 1;">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom shadow sticky-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <i class="bi bi-lightning-charge-fill me-2"></i>
-          <span id="brand-text">Loading<span id="dots"></span></span>
-        </a>
-
-        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button"
-                aria-expanded="false">Más</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Opción 1</a></li>
-                <li><a class="dropdown-item" href="#">Opción 2</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="#">Otra opción</a></li>
-              </ul>
-            </li>
-          </ul>
-
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
-            <button class="btn btn-warning me-3" type="submit">Buscar</button>
-          </form>
-
-          <!-- Botón para cambio de idioma -->
-          <button id="langSwitcher" class="btn btn-primary">
-            ES
-          </button>
-
-        </div>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="py-5 hero-section">
-      <div id="particles-js"></div> <!-- Partículas -->
-
-      <div class="container">
-        <div class="row align-items-center">
-          <!-- Texto principal -->
-          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
-            <h1 class="display-4 fw-bold hero-title mb-3 neon-title" data-i18n="hero.title">
-              Sueña,Construye<br>Lanza
-            </h1>
-            <p class="lead hero-text mb-4" data-i18n="hero.description">
-              Soy Erick Hernández, tengo 18 años y soy un estudiante de software apasionado.
-              Me encanta aprender cosas nuevas y enfrentar retos que me ayuden a crecer profesional y
-              personalmente. Siempre busco mejorar mis habilidades y crear soluciones innovadoras.
-            </p>
-            <div class="d-flex flex-column flex-sm-row gap-2">
-              <a href="nuevo_ingreso.html" class="btn btn-success btn-hover-effect" data-i18n="hero.btnAbout">Sobre
-                mí</a>
-              <a href="contac.html" class="btn btn-outline-success btn-hover-effect"
-                data-i18n="hero.btnProjects">Proyectos</a>
-            </div>
-
-          </div>
-
-          <!-- Animación de código -->
-          <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-            <div class="code-typing-container">
-              <div class="code-screen">
-                <pre><code id="code-output" class="typing"></code></pre>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Líneas decorativas -->
-    <div class="hero-lines">
-      <div class="line line-1"></div>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="nav-shell">
+  <nav class="nav" aria-label="Principal">
+    <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">&lt;/&gt;</span> Erick<span class="brand-last"> Hernández</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+      <a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
     </div>
-
-    <!-- Sección de habilidades -->
-    <section class="skills-section container py-5">
-      <div class="skill-card mb-4">
-        <h2>Lenguajes de Programación</h2>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">P</span> Python</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="90"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">J</span> JavaScript</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="75"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">C#</span> C#</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="60"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-card mb-4">
-        <h2>Frameworks y Tecnologías</h2>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">R</span> React</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="80"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">N</span> Node.js</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="70"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">B</span> Bootstrap</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="90"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-card mb-4">
-        <h2>Herramientas</h2>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">G</span> Git</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="85"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">VS</span> VS Code</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="95"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-name"><span class="icon">D</span> Docker</div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" data-target="50"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sección de galería -->
-    <section class="galeria-seccion container py-5">
-      <div class="row align-items-center mb-5" data-aos="fade-up">
-        <div class="col-md-6"><img src="images/image1.jpg" class="img-fluid galeria-img" alt="Imagen 1" /></div>
-        <div class="col-md-6">
-          <h3>Info</h3>
-          <p>Info</p>
-        </div>
-      </div>
-      <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
-        <div class="col-md-6 order-md-2"><img src="images/image2.jpg" class="img-fluid galeria-img" alt="Imagen 2" />
-        </div>
-        <div class="col-md-6 order-md-1">
-          <h3>Info</h3>
-          <p>Info</p>
-        </div>
-      </div>
-      <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
-        <div class="col-md-6"><img src="images/image3.jpg" class="img-fluid galeria-img" alt="Imagen 3" /></div>
-        <div class="col-md-6">
-          <h3>Info</h3>
-          <p>Info</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer bg-dark text-light pt-5 pb-3">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-md-4">
-            <h3 class="mb-3 fw-bold">Erick Hernández</h3>
-            <p class="small">Desarrollador de software apasionado por la innovación tecnológica, creando soluciones que
-              transforman ideas en realidad.</p>
-          </div>
-          <div class="col-md-4">
-            <h5 class="mb-3">Enlaces</h5>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-light text-decoration-none">Inicio</a></li>
-              <li><a href="#" class="text-light text-decoration-none">Servicios</a></li>
-              <li><a href="#" class="text-light text-decoration-none">Proyectos</a></li>
-              <li><a href="#" class="text-light text-decoration-none">Contacto</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h5 class="mb-3">Contacto</h5>
-            <p class="small mb-1"><i class="bi bi-envelope-fill me-2"></i>erickfrancishernandez@gmail.com</p>
-            <p class="small mb-3"><i class="bi bi-github me-2"></i>https://github.com/ErickFrancis-22</p>
-            <h5 class="mb-3">Sígueme</h5>
-            <a href="#" class="text-light fs-4 me-3"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-light fs-4 me-3"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="text-light fs-4 me-3"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-light fs-4"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-        <hr class="border-secondary my-4" />
-        <div class="text-center small">&copy; 2025 Erick Hernández. Todos los derechos reservados.</div>
-      </div>
-    </footer>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="effects.js"></script>
-  <script>AOS.init();</script>
-
+    <button class="language" id="langSwitcher" type="button" aria-label="Switch to English">EN</button>
+  </nav>
+</header>
+<main id="contenido">
+  <section class="hero wrap" id="inicio">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot"></span> ERICK HERNÁNDEZ / SOFTWARE DEVELOPMENT</p>
+      <h1 data-i18n="hero.title">Ideas que toman forma.<br><span>Código que construye.</span></h1>
+      <p class="hero-description" data-i18n="hero.description">Soy Erick, estudiante de Desarrollo de Software en ITCA-FEPADE. Estoy construyendo mi camino en backend con C#, .NET y SQL Server, un proyecto a la vez.</p>
+      <div class="actions"><a class="button primary" href="#proyectos" data-i18n="hero.projects">Explorar proyectos ↗</a><a class="button secondary" href="https://github.com/ErickFrancis-22" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+      <div class="hero-tags"><span>⌘ C# / .NET</span><span>◫ SQL Server</span><span data-i18n="hero.location">◎ El Salvador</span></div>
+    </div>
+    <aside class="terminal" aria-label="Presentación de Erick">
+      <div class="terminal-header"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span>developer.cs</span><span class="terminal-label">C#</span></div>
+      <div class="terminal-body"><p class="comment">// Building my next chapter.</p><pre><code><span class="keyword">var</span> developer = <span class="keyword">new</span> Developer
+{
+    Name = <span class="string">"Erick Hernández"</span>,
+    Focus = <span class="string">"Backend development"</span>,
+    Stack = [<span class="string">"C#"</span>, <span class="string">".NET"</span>, <span class="string">"SQL"</span>],
+    Mindset = <span class="string">"Keep learning"</span>
+};</code></pre><div class="terminal-output"><span aria-hidden="true">❯</span> <span id="code-output">Aprender. Construir. Mejorar.</span><span class="cursor" aria-hidden="true">▍</span></div></div>
+      <div class="terminal-footer"><span class="dot"></span><span data-i18n="terminal.footer">En constante aprendizaje</span><span class="terminal-end">UTF-8</span></div>
+    </aside>
+  </section>
+  <div class="stack-strip"><div class="wrap"><span data-i18n="stack.label">MI ENFOQUE ACTUAL</span><span>C#</span><span>ASP.NET Core</span><span>SQL Server</span><span>Git & GitHub</span><span>REST APIs</span></div></div>
+  <section class="section wrap" id="proyectos">
+    <div class="section-heading"><div><p class="eyebrow" data-i18n="projects.eyebrow">01 / TRABAJO EN PRÁCTICA</p><h2 data-i18n="projects.title">Proyectos<span>.</span></h2></div><p data-i18n="projects.description">Un espacio para mostrar lo que construyo, cómo lo resuelvo y qué aprendo en el proceso.</p></div>
+    <div class="project-grid" id="project-list"></div>
+    <noscript><p>Activá JavaScript para visualizar las tarjetas de proyectos. También podés visitar <a href="https://github.com/ErickFrancis-22">mi GitHub</a>.</p></noscript>
+  </section>
+  <section class="section wrap about" id="sobre-mi">
+    <div><p class="eyebrow" data-i18n="about.eyebrow">02 / DETRÁS DEL CÓDIGO</p><h2 data-i18n="about.title">Aprender haciendo<span>.</span></h2><p class="about-text" data-i18n="about.description">Me interesa entender cómo funcionan las aplicaciones por dentro: sus datos, sus reglas y las APIs que conectan todo. Mi formación en ITCA-FEPADE y el trabajo en proyectos me ayudan a llevar la teoría a la práctica.</p><a class="text-link" href="https://github.com/ErickFrancis-22" target="_blank" rel="noopener noreferrer" data-i18n="about.link">Seguí mi progreso en GitHub ↗</a></div>
+    <div class="skills"><article><span class="skill-number">01</span><div><h3>Backend</h3><p>C# · ASP.NET Core · Entity Framework Core</p></div></article><article><span class="skill-number">02</span><div><h3 data-i18n="skills.data">Bases de datos</h3><p>SQL Server · SQL</p></div></article><article><span class="skill-number">03</span><div><h3 data-i18n="skills.tools">Herramientas y web</h3><p>Git · GitHub · HTML · CSS · JavaScript</p></div></article></div>
+  </section>
+  <section class="wrap contact" id="contacto"><p class="eyebrow" data-i18n="contact.eyebrow">03 / SIGAMOS EN CONTACTO</p><h2 data-i18n="contact.title">La próxima idea<br>empieza con una conversación<span>.</span></h2><p data-i18n="contact.description">¿Querés hablar sobre un proyecto o una oportunidad de desarrollo?</p><a class="button primary" href="mailto:erickfrancishernandez@gmail.com" data-i18n="contact.button">Escribime ↗</a><a class="email" href="mailto:erickfrancishernandez@gmail.com">erickfrancishernandez@gmail.com</a></section>
+</main>
+<footer class="wrap footer"><a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">&lt;/&gt;</span> Erick Hernández</a><p>© <span id="year">2026</span> Erick Hernández</p><a href="https://github.com/ErickFrancis-22" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
 </body>
-
 </html>

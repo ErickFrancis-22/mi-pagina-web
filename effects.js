@@ -1,179 +1,208 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ---------------- NAVBAR ANIMACIÓN ----------------
-  const brandText = document.getElementById('brand-text');
-  const dots = document.getElementById('dots');
-  let isLoading = true;
-  let dotCount = 0;
-
-  setInterval(() => {
-    isLoading = !isLoading;
-    brandText.firstChild.textContent = isLoading ? "Loading" : "C0d3";
-    dots.style.display = isLoading ? "inline" : "none";
-  }, 4000);
-
-  setInterval(() => {
-    if (isLoading) {
-      dotCount = (dotCount + 1) % 4;
-      dots.textContent = ".".repeat(dotCount);
-    }
-  }, 500);
-
-  // ---------------- ANIMACIÓN DE CÓDIGO ----------------
-  const codeLines = [
-    'print("Hola mundo")',
-    'for i in range(5):',
-    '    print("Hi!...")',
-    'console.log("C#!")'
-  ];
-  const codeElement = document.getElementById("code-output");
-  let lineIndex = 0, charIndex = 0;
-
-  function typeCode() {
-    if (charIndex === 0) codeElement.textContent = ""; // limpia antes de escribir nueva línea
-
-    if (charIndex < codeLines[lineIndex].length) {
-      codeElement.textContent += codeLines[lineIndex].charAt(charIndex);
-      charIndex++;
-      setTimeout(typeCode, 80);
-    } else {
-      setTimeout(() => {
-        lineIndex = (lineIndex + 1) % codeLines.length;
-        charIndex = 0;
-        typeCode();
-      }, 2000);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  const translatedElements = [...document.querySelectorAll('[data-i18n]')];
+  const spanish = new Map(translatedElements.map(el => [el, el.innerHTML]));
+  let language = 'es';
+  const projectList = document.getElementById('project-list');
+  const safeUrl = value => {
+    if (!value) return null;
+    try { const url = new URL(value); return url.protocol === 'https:' ? url.href : null; }
+    catch { return null; }
+  };
+  function renderProjects() {
+    projectList.replaceChildren();
+    (window.portfolioProjects || []).forEach((project, index) => {
+      const card = document.createElement('article');
+      card.className = `project${project.placeholder ? ' placeholder' : ''}`;
+      const art = document.createElement('div'); art.className = 'project-art';
+      const number = document.createElement('small'); number.textContent = `PROJECT / ${String(index + 1).padStart(2, '0')}`;
+      const mark = document.createElement('span'); mark.textContent = project.placeholder ? '+' : '</>';
+      if (project.image && /^(assets\/)[\w./-]+$/.test(project.image) && !project.image.includes('..')) {
+        const img = document.createElement('img'); img.src = project.image;
+        img.alt = project.title[language]; img.loading = 'lazy';
+        img.addEventListener('error', () => img.replaceWith(mark), { once: true }); art.append(img);
+      } else art.append(mark);
+      art.append(number);
+      const body = document.createElement('div'); body.className = 'project-body';
+      const badge = document.createElement('span'); badge.className = 'badge'; badge.textContent = project.status[language];
+      const title = document.createElement('h3'); title.textContent = project.title[language];
+      const description = document.createElement('p'); description.textContent = project.description[language];
+      const tags = document.createElement('div'); tags.className = 'tags';
+      project.technologies.forEach(technology => { const tag = document.createElement('span'); tag.textContent = technology; tags.append(tag); });
+      const links = document.createElement('div'); links.className = 'project-links';
+      [[project.repo, language === 'es' ? 'Ver código ↗' : 'Source code ↗'], [project.demo, language === 'es' ? 'Ver demo ↗' : 'Live demo ↗']].forEach(([value, text]) => {
+        const url = safeUrl(value); if (!url) return;
+        const link = document.createElement('a'); link.href = url; link.textContent = text; link.target = '_blank'; link.rel = 'noopener noreferrer'; links.append(link);
+      });
+      body.append(badge, title, description, tags, links); card.append(art, body); projectList.append(card);
+    });
   }
-  typeCode();
-
-  // ---------------- BARRAS DE PROGRESO ----------------
-  const progressBars = document.querySelectorAll('.progress-bar-fill');
-  progressBars.forEach(bar => {
-    const percentageSpan = document.createElement('span');
-    percentageSpan.classList.add('progress-percentage');
-    percentageSpan.textContent = '0%';
-    bar.appendChild(percentageSpan);
-    bar.style.width = '0%';
+  const switcher = document.getElementById('langSwitcher');
+  switcher.addEventListener('click', () => {
+    language = language === 'es' ? 'en' : 'es'; document.documentElement.lang = language;
+    translatedElements.forEach(el => { el.innerHTML = language === 'es' ? spanish.get(el) : (window.portfolioEnglish[el.dataset.i18n] || spanish.get(el)); });
+    switcher.textContent = language === 'es' ? 'EN' : 'ES';
+    switcher.setAttribute('aria-label', language === 'es' ? 'Switch to English' : 'Cambiar a español');
+    renderProjects();
+    document.getElementById('code-output').textContent = language === 'es' ? 'Aprender. Construir. Mejorar.' : 'Learn. Build. Improve.';
   });
-
-  let barsAnimated = false;
-
-  function animateBars() {
-    if (barsAnimated) return; // Evita repetir animación
-    progressBars.forEach(bar => {
-      const target = +bar.getAttribute('data-target');
-      const span = bar.querySelector('.progress-percentage');
-      let width = 0;
-      bar.classList.add('show-percentage');
-
-      const interval = setInterval(() => {
-        if (width >= target) {
-          clearInterval(interval);
-        } else {
-          width++;
-          bar.style.width = width + '%';
-          span.textContent = width + '%';
-        }
-      }, 15);
-    });
-    barsAnimated = true;  
-  }
-
-  function resetBars() {
-    progressBars.forEach(bar => {
-      bar.style.width = '0%';
-      bar.classList.remove('show-percentage');
-      const span = bar.querySelector('.progress-percentage');
-      span.textContent = '0%';
-    });
-    barsAnimated = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    const skillsSection = document.querySelector('.skills-section');
-    const sectionTop = skillsSection.offsetTop;
-    const sectionHeight = skillsSection.offsetHeight;
-    const scrollY = window.scrollY + window.innerHeight;
-
-    if (scrollY > sectionTop + sectionHeight / 3) {
-      animateBars();
-    } else {
-      resetBars();
-    }
-  });
-
-  // ---------------- PARTICULAS ----------------
-  if (document.getElementById('particles-js')) {
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80 },
-        color: { value: "#00ff88" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3 },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#00ff88",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          bounce: false
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 100, duration: 0.4 },
-          push: { particles_nb: 4 }
-        }
-      },
-      retina_detect: true
-    });
-  }
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('nav-links');
+  function closeMenu() { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  toggle.addEventListener('click', () => { const opened = menu.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(opened)); });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); toggle.focus(); } });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  renderProjects();
 });
 
- const words = ["Sueña", "Construye", "Lanza"];
-  const target = document.getElementById("cyberpunk-text");
+document.addEventListener("DOMContentLoaded", () => {
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
 
-  let wordIndex = 0;
-  let charIndex = 0;
-  let typing = true; // true = escribiendo, false = borrando
+  // ===== BARRA DE LECTURA =====
 
-  function type() {
-    const currentWord = words[wordIndex];
-    
-    if (typing) {
-      target.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-      if (charIndex === currentWord.length) {
-        typing = false;
-        setTimeout(type, 1500); // pausa cuando termina de escribir
-      } else {
-        setTimeout(type, 150);
-      }
-    } else {
-      target.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-      if (charIndex === 0) {
-        typing = true;
-        wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(type, 500);
-      } else {
-        setTimeout(type, 100);
-      }
-    }
+  const progressBar = document.createElement("div");
+  progressBar.className = "scroll-progress";
+  progressBar.setAttribute("aria-hidden", "true");
+  document.body.append(progressBar);
+
+  let scrollFrame = null;
+
+  function updateProgress() {
+    const total =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress =
+      total > 0
+        ? Math.min(1, Math.max(0, window.scrollY / total))
+        : 0;
+
+    progressBar.style.transform = `scaleX(${progress})`;
+    scrollFrame = null;
   }
 
-  type();
+  function scheduleProgress() {
+    if (scrollFrame !== null) return;
 
+    scrollFrame = requestAnimationFrame(updateProgress);
+  }
+
+  window.addEventListener("scroll", scheduleProgress, {
+    passive: true
+  });
+
+  window.addEventListener("resize", scheduleProgress);
+  window.addEventListener("load", scheduleProgress);
+
+  if ("ResizeObserver" in window) {
+    const pageObserver = new ResizeObserver(scheduleProgress);
+    pageObserver.observe(document.body);
+  }
+
+  updateProgress();
+
+  // Entrada de secciones con efecto de desvanecimiento y desplazamiento
+  // Secciones: proyectos, sobre mí y contacto.
+  // Se ocultan al cargar la página y se muestran al hacer scroll.
+
+  const sections = document.querySelectorAll(
+    "#proyectos, #sobre-mi, #contacto"
+  );
+
+  let revealObserver = null;
+
+  function showAllSections() {
+    revealObserver?.disconnect();
+
+    sections.forEach((section) => {
+      section.classList.remove("reveal-pending");
+      section.classList.add("reveal-visible");
+    });
+  }
+
+  if (
+    !reducedMotion.matches &&
+    "IntersectionObserver" in window
+  ) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.remove("reveal-pending");
+          entry.target.classList.add("reveal-visible");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    sections.forEach((section) => {
+      // No ocultamos secciones que ya estén en pantalla.
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight) return;
+
+      section.classList.add("reveal-pending");
+
+      requestAnimationFrame(() => {
+        section.classList.add("reveal-ready");
+        revealObserver.observe(section);
+      });
+    });
+  }
+
+  reducedMotion.addEventListener("change", (event) => {
+    if (event.matches) showAllSections();
+  });
+
+  // Luz que sigue el puntero del mouse en las tarjetas de proyecto
+
+  const projectList = document.getElementById("project-list");
+
+  const finePointer = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  );
+
+  let pointerFrame = null;
+  let lastPointer = null;
+
+  projectList?.addEventListener("pointermove", (event) => {
+    if (!finePointer.matches || reducedMotion.matches) return;
+
+    const card = event.target.closest(".project");
+    if (!card) return;
+
+    lastPointer = {
+      card,
+      x: event.clientX,
+      y: event.clientY
+    };
+
+    if (pointerFrame !== null) return;
+
+    pointerFrame = requestAnimationFrame(() => {
+      const { card, x, y } = lastPointer;
+
+      if (card.isConnected) {
+        const rect = card.getBoundingClientRect();
+
+        card.style.setProperty(
+          "--mouse-x",
+          `${x - rect.left}px`
+        );
+
+        card.style.setProperty(
+          "--mouse-y",
+          `${y - rect.top}px`
+        );
+      }
+
+      pointerFrame = null;
+    });
+  });
+});

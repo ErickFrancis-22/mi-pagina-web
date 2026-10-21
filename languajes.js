@@ -1,48 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const resources = {
-    es: {
-      translation: {
-        "hero.title": "Sueña,Construye<br>Lanza",
-        "hero.description": "Soy Erick Hernández, tengo 18 años y soy un estudiante de software apasionado. Me encanta aprender cosas nuevas y enfrentar retos que me ayuden a crecer profesional y personalmente. Siempre busco mejorar mis habilidades y crear soluciones innovadoras.",
-        "hero.btnAbout": "Sobre mí",
-        "hero.btnProjects": "Proyectos"
-      }
-    },
-    en: {
-      translation: {
-        "hero.title": "Dream, Build<br>Launch",
-        "hero.description": "I am Erick Hernández, 18 years old, and a passionate software student. I love learning new things and facing challenges that help me grow professionally and personally. I always seek to improve my skills and create innovative solutions.",
-        "hero.btnAbout": "About Me",
-        "hero.btnProjects": "Projects"
-      }
-    }
-  };
-
-  i18next.init({
-    lng: 'es',
-    debug: true,
-    resources
-  }, function(err, t) {
-    updateContent();
-  });
-
-  function updateContent() {
-    document.querySelectorAll('[data-i18n]').forEach(elem => {
-      const key = elem.getAttribute('data-i18n');
-      if (key === "hero.title") {
-        elem.innerHTML = i18next.t(key);
-      } else {
-        elem.innerText = i18next.t(key);
-      }
-    });
-  }
-
-  const btn = document.getElementById('langSwitcher');
-  btn.addEventListener('click', () => {
-    const newLang = i18next.language === 'es' ? 'en' : 'es';
-    i18next.changeLanguage(newLang, () => {
-      updateContent();
-      btn.innerText = newLang.toUpperCase();
-    });
-  });
-});
+// Textos de interfaz. Los proyectos se traducen en projects.js.
+window.portfolioEnglish = {
+  "nav.projects": "Projects", "nav.about": "About", "nav.contact": "Contact",
+  "hero.title": "Ideas taking shape.<br><span>Building through code.</span>",
+  "hero.description": "I'm Erick, a Software Development student at ITCA-FEPADE. I'm building my path in backend development with C#, .NET and SQL Server, one project at a time.",
+  "hero.projects": "Explore projects ↗", "hero.location": "◎ El Salvador",
+  "terminal.footer": "Always learning", "stack.label": "MY CURRENT FOCUS",
+  "projects.eyebrow": "01 / LEARNING IN PRACTICE", "projects.title": "Projects<span>.</span>",
+  "projects.description": "A space to share what I build, how I approach problems, and what I learn along the way.",
+  "about.eyebrow": "02 / BEHIND THE CODE", "about.title": "Learning by doing<span>.</span>",
+  "about.description": "I'm interested in how applications work behind the scenes: their data, business rules, and the APIs that connect everything. My training at ITCA-FEPADE and project work help me put theory into practice.",
+  "about.link": "Follow my progress on GitHub ↗", "skills.data": "Databases", "skills.tools": "Tools & web",
+  "contact.eyebrow": "03 / LET'S CONNECT", "contact.title": "The next idea<br>starts with a conversation<span>.</span>",
+  "contact.description": "Want to talk about a project or a development opportunity?", "contact.button": "Get in touch ↗"
+};
