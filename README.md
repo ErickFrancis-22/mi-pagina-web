@@ -1,59 +1,64 @@
+
 <div align="center">
 
-# 🌐 Portafolio personal
-### Erick Francis Hernández Angel
 
-Mi espacio para presentar mis proyectos, conocimientos y progreso en desarrollo de software.
+Mis primeros pasos en desarrollo web, en un solo lugar.
+Un proyecto para experimentar con interfaces, animaciones e interacciones mientras avanzo en mi formación en desarrollo de software.
 
-**HTML · CSS · JavaScript**
+
+
+
+
+
+Proyecto en desarrollo · Sitio estático · Sin proceso de compilación
+
+Explorar el código · Mi perfil de GitHub
 
 </div>
+Sobre el proyecto
+Este portafolio nace como una práctica de desarrollo frontend durante mi formación en Desarrollo de Software en ITCA-FEPADE. Combina una presentación personal con una interfaz oscura, acentos verdes y efectos visuales.
 
----
+Forma parte de mi recorrido de aprendizaje. Actualmente también profundizo en C#, ASP.NET Core y SQL Server, con interés en el desarrollo backend.
 
-## 👋 Sobre el proyecto
+Qué incluye
+Presentación personal con una sección principal y una ventana de código animada.
+Diseño adaptable construido con la grilla y los componentes de Bootstrap 5.
+Efectos visuales con JavaScript y bibliotecas de animación.
+Cambio entre español e inglés para el contenido principal mediante i18next.
+Sección de habilidades con indicadores animados.
+Tecnologías y recursos
+Herramienta	Uso en el sitio
+HTML y CSS	Estructura, estilos y diseño visual
+JavaScript	Interacciones y efectos
+Bootstrap 5 y Bootstrap Icons	Componentes, grilla e iconos
+i18next	Traducción del contenido principal
+GSAP, ScrollTrigger, AOS y ScrollReveal	Recursos de animación
+Particles.js	Fondo de partículas
+Ejecutarlo localmente
+git clone https://github.com/ErickFrancis-22/mi-pagina-web.git
+cd mi-pagina-web
+Abrí index.html en tu navegador o usá Live Server desde Visual Studio Code.
 
-Sitio web personal desarrollado para compartir mis competencias técnicas y mi aprendizaje en desarrollo web.
+No requiere instalar paquetes ni compilar. Las bibliotecas, los iconos y algunas fuentes se cargan desde servicios externos, por lo que se necesita conexión a internet para visualizar todos los recursos.
 
-Este proyecto forma parte de mi formación como Técnico en Desarrollo de Software en ITCA-FEPADE y refleja mis primeros pasos construyendo interfaces con HTML, CSS y JavaScript.
-
-Actualmente, mi aprendizaje también está enfocado en **C#, ASP.NET Core y SQL Server**, con interés en el desarrollo backend.
-
-## 🛠️ Tecnologías
-
-| Tecnología | Uso |
-| :--- | :--- |
-| **HTML5** | Estructura y contenido de las páginas |
-| **CSS3** | Estilos, presentación y adaptación a distintos dispositivos |
-| **JavaScript** | Interacciones, efectos y contenido dinámico |
-
-## 📂 Estructura
-
-```text
+Estructura
 mi-pagina-web/
-├── index.html          # Página principal
-├── competencias.html   # Competencias técnicas
-├── styles.css          # Estilos del sitio
-├── effects.js          # Efectos e interacciones
-└── lenguajes.js         # Presentación de lenguajes
-```
-
-## 🚀 Cómo visualizarlo
-
-1. Cloná o descargá este repositorio.
-2. Abrí `index.html` en tu navegador.
-
-También podés ejecutarlo desde Visual Studio Code con la extensión **Live Server**.
-
-## 👤 Autor
-
-**Erick Francis Hernández Angel**  
+├── assets/
+│   └── readme-banner.svg  # Encabezado del README
+├── index.html            # Página principal
+├── competencias.html     # Archivo reservado para competencias
+├── styles.css            # Estilos del sitio
+├── effects.js            # Animaciones e interacciones
+└── languajes.js          # Traducciones y cambio de idioma
+Próximas mejoras
+Completar las secciones de proyectos y competencias.
+Reemplazar los textos y enlaces de ejemplo.
+Incorporar las imágenes pendientes de la galería.
+Actualizar la presentación y revisar la accesibilidad.
+<div align="center">
+Erick Francis Hernández Angel
 Formación en Desarrollo de Software · ITCA-FEPADE
 
----
-
-<div align="center">
-
-Aprendiendo, construyendo y mejorando un proyecto a la vez.
+GitHub · Contacto
 
 </div>
